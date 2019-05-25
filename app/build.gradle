@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -31,6 +34,9 @@ android {
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31'
 
     // Androidx
     implementation 'androidx.appcompat:appcompat:1.0.2'

@@ -1,17 +1,14 @@
 package com.example.geom_databinding.recyclerview;
 
-import android.util.ArrayMap;
+import androidx.databinding.ObservableArrayMap;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.geom_databinding.R;
 import com.example.geom_databinding.model.Point;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.databinding.ObservableArrayMap;
-import androidx.databinding.ObservableField;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 public class RecyclerViewModel extends ViewModel {
 
@@ -20,6 +17,8 @@ public class RecyclerViewModel extends ViewModel {
     // 어답터
     private RecyclerViewAdapter adapter;
     private MutableLiveData<Point> selected;
+
+    public MutableLiveData<String> posMessageLiveData = new MutableLiveData<>();
 
     // 사진
     private ObservableArrayMap<Integer, Integer> images;
@@ -51,10 +50,7 @@ public class RecyclerViewModel extends ViewModel {
 
     // 리스트 row를 클릭하면 나오는 토스트 메세지
     public void onItemClick(int index){
-        Point db = getPointAt(index);
-        db.setPosition(index);
-
-        selected.setValue(db);
+        posMessageLiveData.setValue("position : " + (index + 1));
     }
 
     public Point getPointAt(Integer position){
@@ -66,11 +62,11 @@ public class RecyclerViewModel extends ViewModel {
     }
 
     public String setCardViewIdText(Integer id){
-        return ("id : " + id);
+        return ("ID : " + id);
     }
 
     public String setCardViewDistText(Double dist){
-        return "거리 : " + String.format("%.2f", dist) + "km";
+        return "Distance : " + String.format("%.2f", dist / 1000) + "km";
     }
 
     public MutableLiveData<Point> getSelected(){
