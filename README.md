@@ -1,5 +1,5 @@
 # android-mvvm-databinding-map
-This is simple app using NaverMap, MVVM, databinding, ViewModel, RecyclerView, LiveData
+This is simple app using NaverMap, MVVM, databinding, ViewModel, RecyclerView, LiveData, Retrofit
 
 ### This Sample will be refactored to Kotlin
 
